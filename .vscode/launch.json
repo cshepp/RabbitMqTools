@@ -1,0 +1,51 @@
+{
+   // Use IntelliSense to find out which attributes exist for C# debugging
+   // Use hover for the description of the existing attributes
+   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+   "version": "0.2.0",
+   "configurations": [
+
+        {
+            "name": "Start Conductor",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/Shepp.RmqTest.Conductor/bin/Debug/netcoreapp2.1/Shepp.RmqTest.Conductor.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Shepp.RmqTest.Conductor",
+            "console": "externalTerminal",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "Start Consumer",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/Shepp.RmqTest.Consumer/bin/Debug/netcoreapp2.1/Shepp.RmqTest.Consumer.dll",
+            "args": ["--config", "sample.config.toml"],
+            "cwd": "${workspaceFolder}/Shepp.RmqTest.Consumer",
+            "console": "externalTerminal",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "Start Producer",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/Shepp.RmqTest.Producer/bin/Debug/netcoreapp2.1/Shepp.RmqTest.Producer.dll",
+            "args": ["--config", "sample.config.toml"],
+            "cwd": "${workspaceFolder}/Shepp.RmqTest.Producer",
+            "console": "externalTerminal",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+    ,]
+}

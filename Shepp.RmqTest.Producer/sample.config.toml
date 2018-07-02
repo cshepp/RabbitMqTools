@@ -1,0 +1,4 @@
+RmqHostName="rabbitmq.yourdomain.com"
+RmqUserName="rabbit"
+RmqPassword="rabbit"
+LogPath="C:\\Logs\\rmq-tools-producer.log"

@@ -1,0 +1,7 @@
+
+RmqAdminUsername="admin"
+RmqAdminPassword="admin"
+VmUsername="admin"
+VmPassword="admin"
+ResourceGroupName="test-resource-group"
+DnsPrefix="rmq-test-"
