@@ -1,4 +1,4 @@
-# RmqTools
+# RabbitMqTools
 
 ## Overview
 
