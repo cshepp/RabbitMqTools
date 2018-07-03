@@ -48,9 +48,9 @@ namespace RabbitMqTools.Conductor.Azure
                 await p.ClusterAsync();
             }
             
-            // TODO - Provision App server
-            // var appVm = await new VirtualMachineFactory(datacenter.ApplicationServer.Name).CreateAsync(virtualNetwork);
-            // await new ApplicationNodeProvisioner(appVm).InstallAsync();
+            //Provision App server
+            var appVm = await new VirtualMachineFactory(datacenter.ApplicationServer.Name).CreateAsync(virtualNetwork);
+            await new ApplicationNodeProvisioner(appVm, createVmTaskResults).InstallAsync();
 
             return Tuple.Create(virtualNetwork, provisioners);
         }

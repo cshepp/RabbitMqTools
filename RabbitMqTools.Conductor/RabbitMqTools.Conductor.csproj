@@ -14,6 +14,7 @@
     <EmbeddedResource Include="Scripts\install-rabbitmq.sh" CopyToOutputDirectory="PreserveNewest" />
     <EmbeddedResource Include="Scripts\federate-rabbitmq.sh" CopyToOutputDirectory="PreserveNewest" />
     <EmbeddedResource Include="Scripts\cluster-rabbitmq.sh" CopyToOutputDirectory="PreserveNewest" />
+    <EmbeddedResource Include="Scripts\install-appserver.sh" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <PropertyGroup>

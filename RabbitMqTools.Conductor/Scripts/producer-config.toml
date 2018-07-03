@@ -1,0 +1,4 @@
+RmqHostName="<RmqHostName>"
+RmqUserName="<RmqUserName>"
+RmqPassword="<RmqPassword>"
+LogPath="/home/<VmUserName>/rmq-tools-producer.log"
