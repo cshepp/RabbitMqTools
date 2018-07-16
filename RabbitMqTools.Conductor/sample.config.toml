@@ -1,7 +1,32 @@
 
 RmqAdminUsername="admin"
 RmqAdminPassword="admin"
-VmUsername="admin"
-VmPassword="admin"
-ResourceGroupName="test-resource-group"
-DnsPrefix="rmq-test-"
+VmUsername="VMUserNameWhatever"
+VmPassword="Th1sSucks!@!@"
+ResourceGroupName="test-resource-group2"
+DnsPrefix="shepp-rmq-test-"
+
+
+[[Datacenters]]
+    Name = "datacenter-1"
+    Number = 1
+    [Datacenters.ApplicationServer]
+        Name = "app-11"
+    [[Datacenters.RabbitMqNodes]]
+        Name = "rmq-11"
+    [[Datacenters.RabbitMqNodes]]
+        Name = "rmq-12"
+    [[Datacenters.RabbitMqNodes]]
+        Name = "rmq-13"
+
+[[Datacenters]]
+    Name = "datacenter-2"
+    Number = 2
+    [Datacenters.ApplicationServer]
+        Name = "app-21"
+    [[Datacenters.RabbitMqNodes]]
+        Name = "rmq-21"
+    [[Datacenters.RabbitMqNodes]]
+        Name = "rmq-22"
+    [[Datacenters.RabbitMqNodes]]
+        Name = "rmq-23"

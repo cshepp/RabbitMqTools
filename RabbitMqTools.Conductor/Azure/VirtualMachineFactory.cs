@@ -10,23 +10,26 @@ using Microsoft.Azure.Management.Fluent;
 using Microsoft.Azure.Management.Network.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using RabbitMqTools.Core;
+using RabbitMqTools.Core.Configuration;
 
 namespace RabbitMqTools.Conductor.Azure
 {
     public class VirtualMachineFactory
     {
         private readonly string _vmName;
+        private readonly IConductorConfiguration _config;
 
-        public VirtualMachineFactory(string name)
+        public VirtualMachineFactory(string name, IConductorConfiguration config)
         {
             _vmName = name;
+            _config = config;
         }
 
         public async Task<VirtualMachineFactoryResult> CreateAsync(INetwork network)
         {
-            var vmUsername = Program.Config.VmUsername;
-            var vmPassword = Program.Config.VmPassword;
-            var vmDnsTag = Program.Config.DnsPrefix + _vmName;
+            var vmUsername = _config.VmUsername;
+            var vmPassword = _config.VmPassword;
+            var vmDnsTag = _config.DnsPrefix + _vmName;
 
             Console.WriteLine($"Creating VM {_vmName}");
 

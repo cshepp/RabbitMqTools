@@ -1,5 +1,5 @@
 
-namespace RabbitMqTools.Conductor
+namespace RabbitMqTools.Core
 {
     public class ApplicationServer
     { 

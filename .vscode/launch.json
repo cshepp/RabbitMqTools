@@ -11,7 +11,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/RabbitMqTools.Conductor/bin/Debug/netcoreapp2.1/RabbitMqTools.Conductor.dll",
-            "args": [],
+            "args": ["init", "--config", "sample.config.toml"],
             "cwd": "${workspaceFolder}/RabbitMqTools.Conductor",
             "console": "externalTerminal",
             "stopAtEntry": false,

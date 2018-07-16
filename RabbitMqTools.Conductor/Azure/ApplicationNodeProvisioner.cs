@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.Network.Fluent;
 using RabbitMqTools.Core;
+using RabbitMqTools.Core.Configuration;
 
 namespace RabbitMqTools.Conductor.Azure
 {
@@ -14,12 +15,17 @@ namespace RabbitMqTools.Conductor.Azure
         private readonly VirtualMachineFactoryResult _vm;
         private readonly VirtualMachineHelper _vmHelper;
         private readonly VirtualMachineFactoryResult[] _rmqVms;
+        private readonly IConductorConfiguration _config;
 
-        public ApplicationNodeProvisioner(VirtualMachineFactoryResult vm, VirtualMachineFactoryResult[] rmqVms)  
+        public ApplicationNodeProvisioner(
+            VirtualMachineFactoryResult vm, 
+            VirtualMachineFactoryResult[] rmqVms, 
+            IConductorConfiguration config)
         {
             _vm = vm;
             _vmHelper = new VirtualMachineHelper(vm);
             _rmqVms = rmqVms;
+            _config = config;
         }
 
         public async Task InstallAsync()
@@ -42,8 +48,8 @@ namespace RabbitMqTools.Conductor.Azure
 
             var replacementValues = new Dictionary<string, string>()
             {
-                { "<RmqUserName>", Program.Config.RmqAdminUsername },
-                { "<RmqPassword>", Program.Config.RmqAdminPassword },
+                { "<RmqUserName>", _config.RmqAdminUsername },
+                { "<RmqPassword>", _config.RmqAdminPassword },
                 { "<RmqHostName>", hostname },
                 { "<VmUserName>", _vm.Username }
             };

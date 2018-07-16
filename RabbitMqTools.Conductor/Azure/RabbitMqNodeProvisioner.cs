@@ -10,6 +10,7 @@ using NLog;
 using Renci.SshNet;
 using Renci.SshNet.Common;
 using RabbitMqTools.Core;
+using RabbitMqTools.Core.Configuration;
 
 namespace RabbitMqTools.Conductor.Azure
 {
@@ -17,14 +18,16 @@ namespace RabbitMqTools.Conductor.Azure
     {
         private readonly VirtualMachineFactoryResult _vm;
         private readonly VirtualMachineHelper _vmHelper;
+        private readonly IConductorConfiguration _config;
         private static ILogger _logger = LogManager.GetCurrentClassLogger();
 
         public string Fqdn => _vm.IpAddress.Fqdn;
 
-        public RabbitMqNodeProvisioner(VirtualMachineFactoryResult vm)
+        public RabbitMqNodeProvisioner(VirtualMachineFactoryResult vm, IConductorConfiguration config)
         {
             _vm = vm;
             _vmHelper = new VirtualMachineHelper(vm);
+            _config = config;
         }
 
         public async Task InstallAsync()
@@ -34,8 +37,8 @@ namespace RabbitMqTools.Conductor.Azure
             var installScript = await File.ReadAllTextAsync("Scripts\\install-rabbitmq.sh");
             installScript = Templater.Replace(installScript, new Dictionary<string, string>()
             {
-                { "<Username>", Program.Config.RmqAdminUsername },
-                { "<Password>", Program.Config.RmqAdminPassword }
+                { "<Username>", _config.RmqAdminUsername },
+                { "<Password>", _config.RmqAdminPassword }
             });
             _vmHelper.UploadFileText(installScript, $"/home/{_vm.Username}/install-rabbitmq.sh");
 
